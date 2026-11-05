@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="theme-color" content="#101014">
+
+    <title>OHIO Restaurant</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+
+.top-contacts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #151515;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 9999;
+}
+
+.top-contacts a {
+  color: white;
+  background: #25D366;
+  padding: 10px 16px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.top-contacts a:hover {
+  transform: scale(1.05);
+  background: #1da851;
+}
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: #101014;
+            color: #f7f5f1;
+            font-family: Poppins, sans-serif;
+            transition: .3s;
+        }
+
+        body.light {
+            background: #f4f3f0;
+            color: #25252b;
+        }
+
+        nav {
+            position: fixed;
+            z-index: 10;
+            inset: 0 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 13px 8%;
+            background: #1b1b21aa;
+            border-bottom: 1px solid #ffffff35;
+            backdrop-filter: blur(18px);
+        }
+
+        body.light nav {
+            background: #ffffffc9;
+            border-color: #2222;
+        }
+
+        .logo {
+            font: 700 22px 'Playfair Display';
+            letter-spacing: 4px;
+        }
+
+        .links,
+        .tools {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .links a {
+            color: inherit;
+            text-decoration: none;
+            font-size: 13px;
+            opacity: .8;
+        }
+
+        .links a:hover {
+            opacity: 1;
+        }
+
+        button,
+        select,
+        input {
+            font-family: Poppins, sans-serif;
+        }
+
+        .pill {
+            color: inherit;
+            background: linear-gradient(135deg, #ffffff30, #ffffff0c);
+            border: 1px solid #ffffff55;
+            border-radius: 30px;
+            padding: 10px 14px;
+            cursor: pointer;
+            backdrop-filter: blur(12px);
+        }
+
+        select {
+            color: inherit;
+            background: #292930;
+            border: 1px solid #ffffff55;
+            border-radius: 30px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        select option {
+            color: white;
+            background: #222;
+        }
+
+        header {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            padding: 110px 20px 60px;
+            background: #101014;
+        }
+
+        header::before,
+        header::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        header::before {
+            z-index: -2;
+            background: url('ohio-car.jpg') center 55% / cover no-repeat;
+            opacity: 0;
+            transform: scale(1.05);
+            animation: photoReveal 1.8s ease forwards;
+            mask-image: linear-gradient(to bottom, transparent, #000 17%, #000 66%, transparent);
+        }
+
+        header::after {
+            z-index: -1;
+            background: linear-gradient(to bottom, #09090a55, #09090a66 54%, #101014);
+        }
+
+        body.light header::after {
+            background: linear-gradient(to bottom, #0f111833, #0f111855 55%, #f4f3f0);
+        }
+
+        header h1 {
+            font: 700 clamp(62px, 13vw, 110px) 'Playfair Display';
+            letter-spacing: .16em;
+            margin: 0;
+            text-shadow: 0 6px 30px #0009;
+        }
+
+        header p {
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+
+        header > div {
+            animation: heroContent 1s ease both;
+        }
+
+        .cta {
+            display: inline-block;
+            margin-top: 24px;
+            color: white;
+            text-decoration: none;
+            border: 1px solid #fff9;
+            border-radius: 50px;
+            padding: 14px 42px;
+            background: #ffffff2b;
+            backdrop-filter: blur(14px);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: .3s;
+        }
+
+        .cta:hover {
+            background: white;
+            color: #111;
+            transform: translateY(-3px);
+        }
+
+        section {
+            padding: 75px 9%;
+            scroll-margin-top: 75px;
+        }
+
+        h2 {
+            text-align: center;
+            font: 500 clamp(26px, 5vw, 38px) 'Playfair Display';
+            margin: 0 0 35px;
+        }
+
+        .search-box {
+            max-width: 500px;
+            margin: 0 auto 25px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 22px;
+            border-radius: 30px;
+            border: 1px solid #ffffff35;
+            background: #ffffff12;
+            color: inherit;
+            outline: none;
+            font-size: 14px;
+            backdrop-filter: blur(12px);
+            transition: .3s;
+        }
+
+        .search-box input:focus {
+            border-color: #d8bd85;
+            box-shadow: 0 0 20px #d8bd8520;
+        }
+
+        .search-box input::placeholder {
+            color: #999;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 9px 20px;
+            border-radius: 30px;
+            border: 1px solid #ffffff35;
+            background: transparent;
+            color: inherit;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: #f1d9a0;
+            color: #181818;
+            border-color: #f1d9a0;
+        }
+
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 15px;
+        }
+
+        .card {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 19px 20px;
+            border-radius: 20px;
+            border: 1px solid #ffffff30;
+            background: linear-gradient(135deg, #ffffff1c, #ffffff08);
+            backdrop-filter: blur(14px);
+            box-shadow: inset 0 1px 1px #ffffff5c, 0 10px 28px #0002;
+            transition: .3s;
+            animation: cardAppear .5s ease both;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #f1d9a080;
+            box-shadow: 0 12px 30px #0004;
+        }
+
+        body.light .card {
+            background: linear-gradient(135deg, #fff, #eeedf0);
+            border-color: #2222;
+            box-shadow: 0 8px 24px #25252b12;
+        }
+
+        .card h3 {
+            font-size: 14px;
+            font-weight: 400;
+            margin: 0;
+        }
+
+        .price {
+            color: #f1d9a0;
+            white-space: nowrap;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        body.light .price {
+            color: #8c5a19;
+        }
+
+        .favorite {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            border: none;
+            background: transparent;
+            color: #aaa;
+            font-size: 17px;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .favorite.active {
+            color: #ff647c;
+        }
+
+        .popular {
+            display: inline-block;
+            font-size: 9px;
+            color: #e7c987;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .empty {
+            text-align: center;
+            opacity: .6;
+            padding: 40px 10px;
+            grid-column: 1 / -1;
+        }
+
+        .foot {
+            text-align: center;
+            opacity: .65;
+            padding: 30px;
+            border-top: 1px solid #ffffff15;
+        }
+
+        @keyframes photoReveal {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes heroContent {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 700px) {
+            nav {
+                padding: 10px 4%;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .links {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .links a {
+                font-size: 12px;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
+            section {
+                padding: 56px 5%;
+            }
+
+            .menu {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .card {
+                padding: 17px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        /* Общие настройки */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Контакты WhatsApp */
+.top-contacts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  background: #151515;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 10;
+}
+
+.top-contacts a {
+  display: inline-block;
+  background: #25D366;
+  color: white;
+  padding: 11px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.top-contacts a:hover {
+  background: #1da851;
+  transform: translateY(-3px);
+}
+
+/* Главная фотография */
+.hero {
+  background-image: url("ohio-car.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 650px;
+}
+
+/* Телефоны и планшеты */
+@media (max-width: 768px) {
+  .top-contacts {
+    gap: 8px;
+    padding: 12px 8px;
+  }
+
+  .top-contacts a {
+    font-size: 13px;
+    padding: 10px 13px;
+  }
+
+  header {
+    padding: 15px;
+  }
+
+  nav {
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero {
+    min-height: 550px;
+    background-size: contain;
+    background-position: center;
+    background-color: #151515;
+  }
+}
+
+/* Маленькие телефоны */
+@media (max-width: 480px) {
+  .top-contacts {
+    flex-direction: column;
+  }
+
+  .top-contacts a {
+    width: 90%;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .hero {
+    min-height: 400px;
+  }
+}
+    
+/* Исправления шапки и мобильной версии */
+nav {
+    position: sticky;
+    top: 0;
+    inset: auto;
+    width: 100%;
+}
+
+header {
+    min-height: 720px;
+    padding: 100px 20px 60px;
+}
+
+header::before {
+    background-image: url("ohio-car.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 1;
+    transform: none;
+    animation: none;
+    mask-image: none;
+    -webkit-mask-image: none;
+}
+
+header::after {
+    background: linear-gradient(
+        to bottom,
+        #09090a30,
+        #09090a20 55%,
+        #101014
+    );
+}
+
+.top-contacts {
+    position: relative;
+    z-index: 20;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .top-contacts {
+        gap: 8px;
+        padding: 10px 8px;
+    }
+
+    .top-contacts a {
+        padding: 9px 12px;
+        font-size: 12px;
+    }
+
+    nav {
+        position: sticky;
+        top: 0;
+        padding: 10px 4%;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .tools {
+        gap: 7px;
+    }
+
+    header {
+        min-height: 620px;
+        padding: 80px 15px 45px;
+    }
+
+    header h1 {
+        font-size: clamp(48px, 14vw, 76px);
+    }
+
+    header p {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    section {
+        padding: 50px 5%;
+    }
+
+    .menu {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .top-contacts {
+        flex-direction: row;
+    }
+
+    .top-contacts a {
+        flex: 1 1 140px;
+        text-align: center;
+        font-size: 11px;
+        padding: 10px 7px;
+    }
+
+    nav {
+        gap: 8px;
+    }
+
+    .logo {
+        font-size: 17px;
+        letter-spacing: 3px;
+    }
+
+    .links {
+        gap: 10px;
+    }
+
+    .links a {
+        font-size: 11px;
+    }
+
+    .pill,
+    select {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    header {
+        min-height: 500px;
+        padding: 65px 12px 35px;
+    }
+
+    header::before {
+        background-size: contain;
+        background-position: center;
+    }
+
+    .cta {
+        padding: 12px 28px;
+        font-size: 12px;
+    }
+
+    .card {
+        gap: 10px;
+        padding: 16px 14px;
+    }
+
+    .card h3 {
+        font-size: 13px;
+    }
+
+    .price {
+        font-size: 13px;
+    }
+}
+
+header::before {
+    background-image: url("ohio-car.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 1;
+    animation: none;
+    mask-image: none;
+}
+
+header {
+    position: relative;
+    overflow: hidden;
+    min-height: 450px;
+}
+
+@media (max-width: 768px) {
+    header {
+        min-height: 350px;
+    }
+
+    header::before {
+        background-position: center center;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+
+    <div class="top-contacts">
+  <a href="https://wa.me/994555886434" target="_blank" rel="noopener noreferrer">🟢 055 588 64 34</a>
+  <a href="https://wa.me/994552234750" target="_blank" rel="noopener noreferrer">🟢 055 223 47 50</a>
+</div>
+
+    <nav>
+        <div class="logo">OHIO</div>
+
+        <div class="links">
+            <a href="#app" data-t="app"></a>
+            <a href="#main" data-t="main"></a>
+            <a href="#drinks" data-t="drinks"></a>
+        </div>
+
+        <div class="tools">
+            <button class="pill" id="theme">☾</button>
+
+            <select id="language">
+                <option value="ru">RU</option>
+                <option value="az">AZ</option>
+                <option value="en">EN</option>
+            </select>
+        </div>
+    </nav>
+
+    <header>
+        <div>
+            <h1>OHIO</h1>
+            <p data-t="tagline"></p>
+            <a class="cta" href="#main" data-t="menu"></a>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="app">
+
+            <h2 data-t="catalog"></h2>
+
+            <div class="search-box">
+                <input
+                    type="text"
+                    id="search"
+                    data-placeholder="search"
+                    placeholder="Поиск блюд..."
+                >
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all" data-t="all"></button>
+                <button class="filter-btn" data-filter="favorites" data-t="favorites"></button>
+                <button class="filter-btn" data-filter="popular" data-t="popular"></button>
+            </div>
+
+            <div id="content"></div>
+
+        </section>
+
+    </main>
+
+    <div class="foot">
+        OHIO Restaurant © 2026
+    </div>
+
+    <script>
+
+        const words = {
+            ru: {
+                app: 'Закуски',
+                main: 'Основное меню',
+                drinks: 'Напитки',
+                tagline: 'Яркий вкус. Свободная атмосфера.',
+                menu: 'Меню',
+                catalog: 'Наше меню',
+                search: 'Поиск блюд...',
+                all: 'Все блюда',
+                favorites: '❤️ Избранное',
+                popular: '⭐ Популярное',
+                toggle: 'Тема',
+                noResults: 'Ничего не найдено',
+                empty: 'Здесь пока нет избранных блюд',
+                categories: [
+                    'Закуски',
+                    'Супы',
+                    'Основное (мясо)',
+                    'Основное (курица)',
+                    'Паста',
+                    'Фастфуд',
+                    'Салаты',
+                    'Рыба',
+                    'Гарниры',
+                    'Завтраки',
+                    'Пиво',
+                    'Домашние вина',
+                    'Кофейный сет',
+                    'Чайный сет',
+                    'Прохладительные напитки'
+                ]
+            },
+
+            az: {
+                app: 'Qəlyanaltılar',
+                main: 'Əsas yeməklər',
+                drinks: 'İçkilər',
+                tagline: 'Yaddaqalan dad. Rahat ab-hava.',
+                menu: 'Menyu',
+                catalog: 'Menyumuz',
+                search: 'Yeməkləri axtar...',
+                all: 'Bütün yeməklər',
+                favorites: '❤️ Seçilmişlər',
+                popular: '⭐ Populyar',
+                toggle: 'Mövzu',
+                noResults: 'Heç nə tapılmadı',
+                empty: 'Seçilmiş yemək yoxdur',
+                categories: [
+                    'Qəlyanaltılar',
+                    'Şorbalar',
+                    'Əsas yeməklər (ət)',
+                    'Əsas yeməklər (toyuq)',
+                    'Pastalar',
+                    'Fast food',
+                    'Salatlar',
+                    'Balıq',
+                    'Qarnirlər',
+                    'Səhər yeməkləri',
+                    'Pivələr',
+                    'Ev şərabları',
+                    'Kofe seti',
+                    'Çay seti',
+                    'Sərin içkilər'
+                ]
+            },
+
+            en: {
+                app: 'Appetizers',
+                main: 'Main dishes',
+                drinks: 'Drinks',
+                tagline: 'Great taste. Relaxed atmosphere.',
+                menu: 'Menu',
+                catalog: 'Our Menu',
+                search: 'Search dishes...',
+                all: 'All dishes',
+                favorites: '❤️ Favorites',
+                popular: '⭐ Popular',
+                toggle: 'Theme',
+                noResults: 'Nothing found',
+                empty: 'No favorite dishes yet',
+                categories: [
+                    'Appetizers',
+                    'Soups',
+                    'Main (meat)',
+                    'Main (chicken)',
+                    'Pasta',
+                    'Fast food',
+                    'Salads',
+                    'Fish',
+                    'Sides',
+                    'Breakfast',
+                    'Beers',
+                    'Homemade wines',
+                    'Coffee set',
+                    'Tea set',
+                    'Soft drinks'
+                ]
+            }
+        };
+
+
+        const cats = [
+            [
+                ['Turşu', 8],
+                ['Turşu Assorti', 6],
+                ['İvanovka ev kolbasası assorti', 13],
+                ['Ağ ev pendiri', 5],
+                ['Pendir assorti', 14],
+                ['Zeytun', 4],
+                ['Blinçik ət ev sayağı', 3],
+                ['Leço ev sayağı', 7],
+                ['İkra ev sayağı', 7],
+                ['Paştet ev sayağı', 9],
+                ['Tərəvəz assorti', 6],
+                ['Baba qanuş, Livan yeməyi', 8]
+            ],
+
+            [
+                ['İspanaq şorbası', 6],
+                ['Çilli şorbası', 9],
+                ['Brokkoli şorbası', 7],
+                ['İvanovka borş', 8],
+                ['Düşbərə', 7],
+                ['Əriştə', 8]
+            ],
+
+            [
+                ['Roast beef', 17],
+                ['Borito can əti Meksikan sayağı', 17],
+                ['Şərab sousunda quzu', 17],
+                ['Stragonov', 16],
+                ['Sac quzu (2 nəfərlik)', 30],
+                ['Sac can əti (2 nəfərlik)', 30],
+                ['Pip dolçası, ev sayağı', 12],
+                ['Quzu nar qovurma', 16],
+                ['Can əti albalı ilə', 17],
+                ['Piti', 9],
+                ['Steak', 34]
+            ],
+
+            [
+                ['Kaşyu çiken', 15],
+                ['Toyuq borito', 15],
+                ['Stragonov', 14],
+                ['Toyuq filesi nar qovurma', 13],
+                ['Toyuq göbələk sousu ilə', 13],
+                ['Kiyev kotlet qarnir ilə', 15],
+                ['Tabaka ev sayağı kartof ilə (2 nəfərlik)', 24],
+                ['Sac kənd çolpası ilə', 27],
+                ['Julyen', 13],
+                ['Çığırtma kənd çolpası ilə', 14],
+                ['Fisincan plov kənd çolpası ilə', 16]
+            ],
+
+            [
+                ['Pad Thai Pasta', 15],
+                ['Fettuccine Alfredo', 16],
+                ['Gürzə', 10],
+                ['Pelmeni, ev sayağı', 10],
+                ['Spagetti Balanez', 14],
+                ['Spagetti toyuq pesto sousunda', 14],
+                ['Xəngəl', 12]
+            ],
+
+            [
+                ['Burger (ət/toyuq)', '14/12'],
+                ['Nuggets fri ilə', 12],
+                ['Kroket kombo (2 nəfərlik)', 19],
+                ['Pendir çubuqları', 8]
+            ],
+
+            [
+                ['Avocado Toyuq', 10],
+                ['Xırt-xırt badımcan', 10],
+                ['Sezar Toyuq', 12],
+                ['Sezar krevetka', 13],
+                ['Çoban', 6]
+            ],
+
+            [
+                ['Forel tavada', 16],
+                ['Qızılbalıq', 24]
+            ],
+
+            [
+                ['Düyü, püre, ev sayağı kartof, fri', 4]
+            ],
+
+            [
+                ['İvanovka set (2 nəfərlik)', 20],
+                ['Kənd yumurtası ev sosiskası ilə', 10],
+                ['Kükü', 6],
+                ['Sadə omlet', 5],
+                ['Pendirli omlet', 7],
+                ['OHIO Mix omlet', 12],
+                ['Pomidor yumurta', 7],
+                ['Blinçik sadə (5 ədəd)', 6],
+                ['Soyutma yumurta', 1],
+                ['Qlazok yumurta', 4],
+                ['Kaşa', 6],
+                ['Sirnik', 5]
+            ],
+
+            [
+                ['OHIO pivə (0.5L)', 9],
+                ['Xırdalan (0.5L)', 6],
+                ['Miller (0.33L)', 7]
+            ],
+
+            [
+                ['Quru qırmızı çaxır (butulka)', 28],
+                ['Quru qırmızı çaxır (bakal)', 8],
+                ['Kam şirin qırmızı çaxır (butulka)', 25],
+                ['Isabel quru (butulka)', 20],
+                ['Meyvə çaxırları', 20],
+                ['Ev tut arağı (150 ml)', 20],
+                ['Ev şaftalı (150 ml)', 15],
+                ['Ev likör assorti (300 ml)', 15]
+            ],
+
+            [
+                ['Kofe Amerikano, 1 şirniyyat', 10],
+                ['Kofe Amerikano, cheesecake', 15],
+                ['Kofe Amerikano, tiramisu', 16]
+            ],
+
+            [
+                ['2 nəfərlik çay, ev mürəbbəsi ilə', 16],
+                ['2 nəfərlik çay, ev şirniyyatı ilə', 12],
+                ['2 nəfərlik çay, cheesecake ilə', 15],
+                ['2 nəfərlik çay, tiramisu ilə', 16]
+            ],
+
+            [
+                ['Ev kompotları', 5],
+                ['Nataxtari', 4],
+                ['Cola, Pepsi (0.33L)', 3],
+                ['Təzə çəkilmiş şirələr (0.25L)', 8],
+                ['Ev sayağı şaftalı şirəsi (1L)', 9],
+                ['Sirab su (0.5L)', 3]
+            ]
+        ];
+
+
+        const ru = {
+            'Turşu': 'Маринованные овощи',
+            'Turşu Assorti': 'Ассорти солений',
+            'İvanovka ev kolbasası assorti': 'Ассорти домашних колбас',
+            'Ağ ev pendiri': 'Домашний белый сыр',
+            'Pendir assorti': 'Сырное ассорти',
+            'Zeytun': 'Оливки',
+            'Blinçik ət ev sayağı': 'Домашний блинчик с мясом',
+            'Leço ev sayağı': 'Домашнее лечо',
+            'İkra ev sayağı': 'Домашняя икра',
+            'Paştet ev sayağı': 'Домашний паштет',
+            'Tərəvəz assorti': 'Овощное ассорти',
+            'Baba qanuş, Livan yeməyi': 'Баба гануш по-ливански',
+
+            'İspanaq şorbası': 'Шпинатный суп',
+            'Çilli şorbası': 'Острый суп чили',
+            'Brokkoli şorbası': 'Суп из брокколи',
+            'İvanovka borş': 'Ивановский борщ',
+            'Düşbərə': 'Дюшбара',
+            'Əriştə': 'Суп с домашней лапшой',
+
+            'Roast beef': 'Ростбиф',
+            'Borito can əti Meksikan sayağı': 'Мексиканское буррито с говядиной',
+            'Şərab sousunda quzu': 'Баранина в винном соусе',
+            'Stragonov': 'Бефстроганов',
+            'Sac quzu (2 nəfərlik)': 'Садж с бараниной (на двоих)',
+            'Sac can əti (2 nəfərlik)': 'Садж с говядиной (на двоих)',
+            'Pip dolçası, ev sayağı': 'Домашняя долма в перце',
+            'Quzu nar qovurma': 'Баранина с гранатом',
+            'Can əti albalı ilə': 'Говядина с вишней',
+            'Piti': 'Пити',
+            'Steak': 'Стейк',
+
+            'Kaşyu çiken': 'Курица с кешью',
+            'Toyuq borito': 'Буррито с курицей',
+            'Toyuq filesi nar qovurma': 'Куриное филе с гранатом',
+            'Toyuq göbələk sousu ilə': 'Курица в грибном соусе',
+            'Kiyev kotlet qarnir ilə': 'Котлета по-киевски с гарниром',
+            'Tabaka ev sayağı kartof ilə (2 nəfərlik)': 'Цыплёнок табака с картофелем (на двоих)',
+            'Sac kənd çolpası ilə': 'Садж с домашней курицей',
+            'Julyen': 'Жюльен',
+            'Çığırtma kənd çolpası ilə': 'Чыхыртма с домашней курицей',
+            'Fisincan plov kənd çolpası ilə': 'Фисинджан-плов с домашней курицей',
+
+            'Gürzə': 'Гюрза',
+            'Pelmeni, ev sayağı': 'Домашние пельмени',
+            'Spagetti Balanez': 'Спагетти болоньезе',
+            'Spagetti toyuq pesto sousunda': 'Спагетти с курицей и соусом песто',
+            'Xəngəl': 'Хангал',
+
+            'Burger (ət/toyuq)': 'Бургер (мясо/курица)',
+            'Nuggets fri ilə': 'Наггетсы с картофелем фри',
+            'Kroket kombo (2 nəfərlik)': 'Комбо с крокетами (на двоих)',
+            'Pendir çubuqları': 'Сырные палочки',
+
+            'Avocado Toyuq': 'Салат с авокадо и курицей',
+            'Xırt-xırt badımcan': 'Хрустящие баклажаны',
+            'Sezar Toyuq': 'Цезарь с курицей',
+            'Sezar krevetka': 'Цезарь с креветками',
+            'Çoban': 'Шопский салат',
+
+            'Forel tavada': 'Форель на сковороде',
+            'Qızılbalıq': 'Лосось',
+
+            'Düyü, püre, ev sayağı kartof, fri': 'Рис, пюре, домашний картофель, фри',
+
+            'İvanovka set (2 nəfərlik)': 'Ивановский сет (на двоих)',
+            'Kənd yumurtası ev sosiskası ilə': 'Деревенские яйца с домашними сосисками',
+            'Kükü': 'Кюкю',
+            'Sadə omlet': 'Обычный омлет',
+            'Pendirli omlet': 'Омлет с сыром',
+            'OHIO Mix omlet': 'Омлет OHIO Mix',
+            'Pomidor yumurta': 'Яичница с помидорами',
+            'Blinçik sadə (5 ədəd)': 'Блинчики (5 штук)',
+            'Soyutma yumurta': 'Варёные яйца',
+            'Qlazok yumurta': 'Яичница-глазунья',
+            'Kaşa': 'Каша',
+            'Sirnik': 'Сырники',
+
+            'Quru qırmızı çaxır (butulka)': 'Сухое красное вино (бутылка)',
+            'Quru qırmızı çaxır (bakal)': 'Сухое красное вино (бокал)',
+            'Kam şirin qırmızı çaxır (butulka)': 'Полусладкое красное вино (бутылка)',
+            'Isabel quru (butulka)': 'Сухое вино Изабелла (бутылка)',
+            'Meyvə çaxırları': 'Фруктовые вина',
+            'Ev tut arağı (150 ml)': 'Домашняя тутовая водка (150 мл)',
+            'Ev şaftalı (150 ml)': 'Домашний персиковый напиток (150 мл)',
+            'Ev likör assorti (300 ml)': 'Ассорти домашних ликёров (300 мл)',
+
+            'Kofe Amerikano, 1 şirniyyat': 'Американо с десертом',
+            'Kofe Amerikano, cheesecake': 'Американо с чизкейком',
+            'Kofe Amerikano, tiramisu': 'Американо с тирамису',
+
+            '2 nəfərlik çay, ev mürəbbəsi ilə': 'Чай на двоих с домашним вареньем',
+            '2 nəfərlik çay, ev şirniyyatı ilə': 'Чай на двоих с домашней выпечкой',
+            '2 nəfərlik çay, cheesecake ilə': 'Чай на двоих с чизкейком',
+            '2 nəfərlik çay, tiramisu ilə': 'Чай на двоих с тирамису',
+
+            'Ev kompotları': 'Домашние компоты',
+            'Təzə çəkilmiş şirələr (0.25L)': 'Свежевыжатые соки (0.25 л)',
+            'Ev sayağı şaftalı şirəsi (1L)': 'Домашний персиковый сок (1 л)',
+            'Sirab su (0.5L)': 'Вода Sirab (0.5 л)'
+        };
+
+
+        const en = {
+            'Turşu': 'Pickled Vegetables',
+            'Turşu Assorti': 'Pickle Assortment',
+            'İvanovka ev kolbasası assorti': 'Homemade Sausage Platter',
+            'Ağ ev pendiri': 'Homemade White Cheese',
+            'Pendir assorti': 'Cheese Assortment',
+            'Zeytun': 'Olives',
+            'Blinçik ət ev sayağı': 'Homemade Meat Pancake',
+            'Leço ev sayağı': 'Homemade Lecho',
+            'İkra ev sayağı': 'Homemade Vegetable Caviar',
+            'Paştet ev sayağı': 'Homemade Pâté',
+            'Tərəvəz assorti': 'Vegetable Platter',
+            'Baba qanuş, Livan yeməyi': 'Lebanese Baba Ghanoush',
+
+            'İspanaq şorbası': 'Spinach Soup',
+            'Çilli şorbası': 'Chili Soup',
+            'Brokkoli şorbası': 'Broccoli Soup',
+            'İvanovka borş': 'Ivanovka Borscht',
+            'Düşbərə': 'Dushbara',
+            'Əriştə': 'Homemade Noodle Soup',
+
+            'Roast beef': 'Roast Beef',
+            'Borito can əti Meksikan sayağı': 'Mexican Beef Burrito',
+            'Şərab sousunda quzu': 'Lamb in Wine Sauce',
+            'Stragonov': 'Beef Stroganoff',
+            'Sac quzu (2 nəfərlik)': 'Lamb Saj (For Two)',
+            'Sac can əti (2 nəfərlik)': 'Beef Saj (For Two)',
+            'Pip dolçası, ev sayağı': 'Homemade Stuffed Peppers',
+            'Quzu nar qovurma': 'Lamb with Pomegranate',
+            'Can əti albalı ilə': 'Beef with Cherries',
+            'Piti': 'Piti',
+            'Steak': 'Steak',
+
+            'Kaşyu çiken': 'Cashew Chicken',
+            'Toyuq borito': 'Chicken Burrito',
+            'Toyuq filesi nar qovurma': 'Chicken Fillet with Pomegranate',
+            'Toyuq göbələk sousu ilə': 'Chicken with Mushroom Sauce',
+            'Kiyev kotlet qarnir ilə': 'Chicken Kyiv with Side Dish',
+            'Tabaka ev sayağı kartof ilə (2 nəfərlik)': 'Chicken Tabaka with Potatoes (For Two)',
+            'Sac kənd çolpası ilə': 'Country Chicken Saj',
+            'Julyen': 'Julienne',
+            'Çığırtma kənd çolpası ilə': 'Chicken Chighirtma',
+            'Fisincan plov kənd çolpası ilə': 'Fisincan Pilaf with Chicken',
+
+            'Gürzə': 'Gurza Dumplings',
+            'Pelmeni, ev sayağı': 'Homemade Pelmeni',
+            'Spagetti Balanez': 'Spaghetti Bolognese',
+            'Spagetti toyuq pesto sousunda': 'Chicken Pesto Spaghetti',
+            'Xəngəl': 'Khangal',
+
+            'Burger (ət/toyuq)': 'Burger (Beef/Chicken)',
+            'Nuggets fri ilə': 'Chicken Nuggets with Fries',
+            'Kroket kombo (2 nəfərlik)': 'Croquette Combo (For Two)',
+            'Pendir çubuqları': 'Cheese Sticks',
+
+            'Avocado Toyuq': 'Chicken Avocado Salad',
+            'Xırt-xırt badımcan': 'Crispy Eggplant',
+            'Sezar Toyuq': 'Chicken Caesar Salad',
+            'Sezar krevetka': 'Shrimp Caesar Salad',
+            'Çoban': 'Shepherd Salad',
+
+            'Forel tavada': 'Pan-Fried Trout',
+            'Qızılbalıq': 'Salmon',
+
+            'Düyü, püre, ev sayağı kartof, fri': 'Rice, Mashed Potatoes, Homemade Potatoes, Fries',
+
+            'İvanovka set (2 nəfərlik)': 'Ivanovka Set (For Two)',
+            'Kənd yumurtası ev sosiskası ilə': 'Farm Eggs with Homemade Sausages',
+            'Kükü': 'Kuku',
+            'Sadə omlet': 'Plain Omelette',
+            'Pendirli omlet': 'Cheese Omelette',
+            'OHIO Mix omlet': 'OHIO Mix Omelette',
+            'Pomidor yumurta': 'Eggs with Tomatoes',
+            'Blinçik sadə (5 ədəd)': 'Plain Pancakes (5 Pieces)',
+            'Soyutma yumurta': 'Boiled Eggs',
+            'Qlazok yumurta': 'Fried Eggs',
+            'Kaşa': 'Porridge',
+            'Sirnik': 'Syrniki',
+
+            'OHIO pivə (0.5L)': 'OHIO Beer (0.5L)',
+            'Xırdalan (0.5L)': 'Xirdalan Beer (0.5L)',
+            'Miller (0.33L)': 'Miller Beer (0.33L)',
+
+            'Quru qırmızı çaxır (butulka)': 'Dry Red Wine (Bottle)',
+            'Quru qırmızı çaxır (bakal)': 'Dry Red Wine (Glass)',
+            'Kam şirin qırmızı çaxır (butulka)': 'Semi-Sweet Red Wine (Bottle)',
+            'Isabel quru (butulka)': 'Dry Isabella Wine (Bottle)',
+            'Meyvə çaxırları': 'Fruit Wines',
+            'Ev tut arağı (150 ml)': 'Homemade Mulberry Spirit (150 ml)',
+            'Ev şaftalı (150 ml)': 'Homemade Peach Drink (150 ml)',
+            'Ev likör assorti (300 ml)': 'Homemade Liqueur Assortment (300 ml)',
+
+            'Kofe Amerikano, 1 şirniyyat': 'Americano with Dessert',
+            'Kofe Amerikano, cheesecake': 'Americano with Cheesecake',
+            'Kofe Amerikano, tiramisu': 'Americano with Tiramisu',
+
+            '2 nəfərlik çay, ev mürəbbəsi ilə': 'Tea for Two with Homemade Jam',
+            '2 nəfərlik çay, ev şirniyyatı ilə': 'Tea for Two with Homemade Sweets',
+            '2 nəfərlik çay, cheesecake ilə': 'Tea for Two with Cheesecake',
+            '2 nəfərlik çay, tiramisu ilə': 'Tea for Two with Tiramisu',
+
+            'Ev kompotları': 'Homemade Compote',
+            'Təzə çəkilmiş şirələr (0.25L)': 'Fresh Juices (0.25L)',
+            'Ev sayağı şaftalı şirəsi (1L)': 'Homemade Peach Juice (1L)',
+            'Sirab su (0.5L)': 'Sirab Water (0.5L)'
+        };
+
+
+        const translations = {
+            ru,
+            en
+        };
+
+
+        const popular = [
+            'Steak',
+            'Qızılbalıq',
+            'Sezar Toyuq',
+            'Pad Thai Pasta',
+            'OHIO Mix omlet',
+            'Sac quzu (2 nəfərlik)'
+        ];
+
+
+        const root = document.getElementById('content');
+        const lang = document.getElementById('language');
+        const search = document.getElementById('search');
+
+        let filter = 'all';
+
+        let favorites = JSON.parse(
+            localStorage.getItem('ohio-favorites') || '[]'
+        );
+
+
+        function getName(name) {
+            const l = lang.value;
+
+            if (l === 'az') return name;
+
+            return translations[l][name] || name;
+        }
+
+
+        function render() {
+            const l = lang.value;
+            const t = words[l];
+            const query = search.value.toLowerCase().trim();
+
+            document.documentElement.lang = l;
+
+            document.querySelectorAll('[data-t]').forEach(element => {
+                element.textContent = t[element.dataset.t];
+            });
+
+            search.placeholder = t.search;
+
+            root.innerHTML = cats.map((items, i) => {
+
+                const cards = items.filter(([name]) => {
+
+                    const translated = getName(name).toLowerCase();
+
+                    const matchesSearch =
+                        name.toLowerCase().includes(query) ||
+                        translated.includes(query);
+
+                    const matchesFavorites =
+                        filter !== 'favorites' || favorites.includes(name);
+
+                    const matchesPopular =
+                        filter !== 'popular' || popular.includes(name);
+
+                    return matchesSearch && matchesFavorites && matchesPopular;
+
+                });
+
+                if (cards.length === 0) return '';
+
+                return `
+                    <section id="${i === 2 ? 'main' : i === 10 ? 'drinks' : 'category-' + i}">
+
+                        <h2>${t.categories[i]}</h2>
+
+                        <div class="menu">
+
+                            ${cards.map(([name, price]) => {
+
+                                const isPopular = popular.includes(name);
+                                const isFavorite = favorites.includes(name);
+
+                                return `
+                                    <article class="card">
+
+                                        <button
+                                            class="favorite ${isFavorite ? 'active' : ''}"
+                                            data-name="${name.replace(/"/g, '&quot;')}"
+                                            aria-label="Favorite"
+                                        >
+                                            ${isFavorite ? '♥' : '♡'}
+                                        </button>
+
+                                        <div>
+                                            ${isPopular ? `<span class="popular">★ ${t.popular}</span>` : ''}
+
+                                            <h3>${getName(name)}</h3>
+                                        </div>
+
+                                        <span class="price">
+                                            ${typeof price === 'number' ? price.toFixed(2) : price} ₼
+                                        </span>
+
+                                    </article>
+                                `;
+
+                            }).join('')}
+
+                        </div>
+
+                    </section>
+                `;
+
+            }).join('');
+
+
+            if (!root.innerHTML) {
+                root.innerHTML = `
+                    <div class="empty">
+                        ${filter === 'favorites' && !query ? t.empty : t.noResults}
+                    </div>
+                `;
+            }
+
+
+            root.querySelectorAll('.favorite').forEach(button => {
+
+                button.addEventListener('click', () => {
+
+                    const name = button.dataset.name;
+
+                    if (favorites.includes(name)) {
+                        favorites = favorites.filter(item => item !== name);
+                    } else {
+                        favorites.push(name);
+                    }
+
+                    localStorage.setItem(
+                        'ohio-favorites',
+                        JSON.stringify(favorites)
+                    );
+
+                    render();
+
+                });
+
+            });
+
+        }
+
+
+        lang.value = localStorage.getItem('ohio-language') || 'ru';
+
+        if (!words[lang.value]) {
+            lang.value = 'ru';
+        }
+
+        lang.addEventListener('change', () => {
+
+            localStorage.setItem('ohio-language', lang.value);
+
+            updateTheme();
+            render();
+
+        });
+
+
+        search.addEventListener('input', render);
+
+
+        document.querySelectorAll('.filter-btn').forEach(button => {
+
+            button.addEventListener('click', () => {
+
+                filter = button.dataset.filter;
+
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+
+                button.classList.add('active');
+
+                render();
+
+            });
+
+        });
+
+
+        function updateTheme() {
+
+            const light = document.body.classList.contains('light');
+
+            document.getElementById('theme').textContent =
+                words[lang.value].toggle + ': ' + (light ? '☼' : '☾');
+
+        }
+
+
+        function setTheme(light) {
+
+            document.body.classList.toggle('light', light);
+
+            localStorage.setItem(
+                'ohio-theme',
+                light ? 'light' : 'dark'
+            );
+
+            updateTheme();
+
+        }
+
+
+        setTheme(localStorage.getItem('ohio-theme') === 'light');
+
+        document.getElementById('theme').addEventListener('click', () => {
+
+            setTheme(!document.body.classList.contains('light'));
+
+        });
+
+
+        render();
+
+    </script>
+
+</body>
+</html>
